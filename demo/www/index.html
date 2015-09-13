@@ -37,7 +37,8 @@
         <button class="button button-block" ng-click="info()">Get Info</button>
         <button class="button button-block" ng-click="scan()" ng-if="gotInfo">Scan</button>
         <div class="list list-inset">
-          <div ng-repeat="ap in accessPoints" class="item" ng-click="selectAP(ap)">
+          <div ng-repeat="ap in accessPoints" class="item item-icon-right" ng-click="selectAP(ap)">
+            <i class="icon ion-locked" ng-if="ap.sec"></i>
             {{ap.ssid}} ({{ap.signalStrength}}%)
           </div>
         </div>
