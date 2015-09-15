@@ -20,4 +20,4 @@ Basically, you need to do 3 things:
 
 ## Questions? Comments? Concerns? ##
 
-We'll be adding a "How to Contribute" once we have this on Github and Bower and it's all tidied up. For now, feel free to email brad@mobileigniter.com with any questions/etc. Thanks!
+We'll be adding a "How to Contribute" once we have this on Github and Bower and it's all tidied up. For now, feel free to email [brad@mobileigniter.com](mailto:brad@mobileigniter.com) with any questions/etc. Thanks!
