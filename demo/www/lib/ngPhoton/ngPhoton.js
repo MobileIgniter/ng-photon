@@ -76,6 +76,8 @@
               return d.resolve(data);
             });
             return d.promise;
+          }, function (err) {
+            d.reject(err);
           });
         }, function (err) {
           d.reject(err);

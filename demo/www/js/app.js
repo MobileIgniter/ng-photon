@@ -30,8 +30,8 @@ angular.module('starter', ['ionic', 'ngPhoton'])
             });
         };
         $rootScope.selectAP = function (ap) {
+          $rootScope.data = {wifi: ''};
           if (ap.sec) {
-            $rootScope.data = {wifi: ''};
             $ionicPopup.show({
               template: '<input type="text" ng-model="data.wifi">',
               title: 'Enter Wi-Fi Password',
