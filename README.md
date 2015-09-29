@@ -20,7 +20,7 @@ Basically, you need to do 3 things:
 
 ## Caveats ##
 
-The SoftAP library included in `ngPhoton.min.js` is based on [this pull request](https://github.com/spark/softap-setup-js/pull/3) which browserifies the node.js library written by Particle.
+The SoftAP library included in `ngPhoton.min.js` is based on [this fork](https://github.com/msolters/softap-setup-js) which browserifies the node.js library written by Particle.
 
 Also your Photon needs to be running firmware version 0.4.4 or better. You can read more about flashing firmware [here](https://github.com/spark/firmware) (it's pretty easy).
 
