@@ -82,34 +82,33 @@
         }
         config = {
           ssid: obj.accessPoint.ssid,
-          channel: obj.accessPoint.channel,
-          security: SAP.securityLookup(obj.accessPoint.sec),
-          password: obj.password
+          ch: obj.accessPoint.ch,
+          sec: obj.accessPoint.sec,
+          idx: 0,
+          pwd: rsa.encrypt(obj.password)
         };
-        SAP.configure(config, function (error, data) {
-          if (error) {
-            return d.reject(error);
-          }
-          return d.resolve(data);
-        });
+        $http.post(baseURL + 'configure-ap', config, {withCredentials: false, headers: {'Content-Type': 'multipart/form-data', 'Accept': '*/*'}})
+          .then(function (resp) {
+            console.log(resp);
+            return d.resolve(config);
+          }, function (err) {
+            return d.reject(err);
+          });
         return d.promise;
       };
 
       ngPhoton.connect = function (obj) {
         var d = $q.defer();
-        return ngPhoton.publicKey()
-          .then(function () {
-            return ngPhoton.configure(obj).then(function () { ///data) {
-              SAP.connect(function (error, data) {
-                if (error) {
-                  return d.reject(error);
-                }
-                return d.resolve(data);
+        return ngPhoton.configure(obj)
+          .then(function (resp) { ///data) {
+            console.log(resp);
+            $http.post(baseURL + 'connect-ap', {}, {withCredentials: false, headers: {'Content-Type': 'multipart/form-data', 'Accept': '*/*'}})
+              .then(function (resp) {
+                return d.resolve(resp);
+              }, function (err) {
+                return d.reject(err);
               });
-              return d.promise;
-            }, function (err) {
-              d.reject(err);
-            });
+            return d.promise;
           }, function (err) {
             d.reject(err);
           });
