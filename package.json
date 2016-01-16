@@ -1,0 +1,26 @@
+{
+  "name": "ngphoton",
+  "version": "0.2.0",
+  "description": "An AngularJS library to connect to Particle's Photon WiFi Module.",
+  "main": "lib/ngPhoton.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MobileIgniter/ng-photon.git"
+  },
+  "keywords": [
+    "particle",
+    "photon",
+    "angular",
+    "angularjs",
+    "javascript"
+  ],
+  "author": "Brad Orego",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MobileIgniter/ng-photon/issues"
+  },
+  "homepage": "https://github.com/MobileIgniter/ng-photon#readme"
+}
