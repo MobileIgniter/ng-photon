@@ -1,10 +1,10 @@
 {
   "name": "ngPhoton",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "authors": [
     "Brad Orego <brad@mobileigniter.com>"
   ],
-  "description": "An AngularJS wrapper for the SoftAP Javascript library provided by Particle for the Photon WiFi Module.",
+  "description": "An AngularJS library to connect to Particle's Photon WiFi Module.",
   "main": "lib/ngPhoton.min.js",
   "moduleType": [
     "globals"
@@ -13,7 +13,8 @@
     "particle",
     "photon",
     "angular",
-    "angularjs"
+    "angularjs",
+    "javascript"
   ],
   "license": "MIT",
   "ignore": [
