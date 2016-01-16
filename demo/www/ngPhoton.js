@@ -10,6 +10,7 @@
         networkList = [],
         public_key = '',
         deviceId = '',
+        POSToptions = {withCredentials: false, headers: {'Content-Type': 'multipart/form-data', 'Accept': '*/*'}}, /// required to make the Photon behave
         rsa = new RSAKey(); /// requires rsa.min.js
 
       ngPhoton.deviceInfo = function () {
@@ -87,7 +88,7 @@
           idx: 0,
           pwd: rsa.encrypt(obj.password)
         };
-        $http.post(baseURL + 'configure-ap', config, {withCredentials: false, headers: {'Content-Type': 'multipart/form-data', 'Accept': '*/*'}})
+        $http.post(baseURL + 'configure-ap', config, POSToptions)
           .then(function (resp) {
             console.log(resp);
             return d.resolve(config);
@@ -102,7 +103,7 @@
         return ngPhoton.configure(obj)
           .then(function (resp) { ///data) {
             console.log(resp);
-            $http.post(baseURL + 'connect-ap', {}, {withCredentials: false, headers: {'Content-Type': 'multipart/form-data', 'Accept': '*/*'}})
+            $http.post(baseURL + 'connect-ap', {}, POSToptions)
               .then(function (resp) {
                 return d.resolve(resp);
               }, function (err) {
