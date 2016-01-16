@@ -1,3 +1,4 @@
+/*global angular, RSAKey */
 (function () {
   'use strict';
   var ngPhotonDec = [
@@ -6,12 +7,14 @@
     function ($q, $http) {
       var ngPhoton = {},
         baseURL = "http://192.168.0.1/",
-        networkList, public_key, deviceId,
+        networkList = [],
+        public_key = '',
+        deviceId = '',
         rsa = new RSAKey(); /// requires rsa.min.js
 
       ngPhoton.deviceInfo = function () {
         var d = $q.defer();
-        return ngPhoton.publicKey()
+        ngPhoton.publicKey()
           .then(function () {
             $http.get(baseURL + 'device-id')
               .then(function (resp) {
@@ -32,14 +35,14 @@
       ngPhoton.publicKey = function () {
         var d = $q.defer();
         // SAP.publicKey(function (error, data) {
-        return $http.get(baseURL + 'public-key')
+        $http.get(baseURL + 'public-key')
           .then(function (resp) {
             if (!resp.data || !resp.data.b) {
               return d.reject(resp);
             }
             public_key = resp.data.b;
             // Pull N and E out of device key and use to set public key
-            rsa.setPublic(public_key.substring(58,58+256), public_key.substring(318,318+6));
+            rsa.setPublic(public_key.substring(58, 58 + 256), public_key.substring(318, 318 + 6));
             return d.resolve(resp);
           }, function (err) {
             return d.reject(err);
@@ -54,33 +57,21 @@
             if (!resp.data || !resp.data.scans) {
               return d.reject(resp);
             }
-            networkList = resp.data.scans
+            networkList = resp.data.scans;
             angular.forEach(networkList, function (ap) {
               ap.signalStrength = Math.min(Math.max(2 * (ap.rssi + 100), 0), 100);
             });
             networkList.sort(function (a, b) {
               if (a.signalStrength > b.signalStrength) {
                 return -1;
-              } else {
-                return 1;
               }
+              return 1;
             });
             return d.resolve(networkList);
           }, function (err) {
             return d.reject(err);
           });
         return d.promise;
-        // SAP.scan(function (error, data) {
-        //   if (error || !data.scans) {
-        //     return d.reject(error);
-        //   }
-        //   angular.forEach(data.scans, function (ap) {
-        //     ap.signalStrength = Math.min(Math.max(2 * (ap.rssi + 100), 0), 100);
-        //   });
-        //   // accessPoints = data.scans;
-        //   return d.resolve(data.scans);
-        // });
-        // return d.promise;
       };
 
       ngPhoton.configure = function (obj) { ///obj.accessPoint, obj.password)
