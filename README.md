@@ -8,6 +8,8 @@ The actual library is in `/lib`. `ngPhoton.min.js` is all you need to include, a
 
 ## How to use ##
 
+Make sure you include ngPhoton.min.js in your index.html file (or wherever your Javascript files are loaded).
+
 ngPhoton defines its own module (ngPhoton) in your Angular app, so you'll have to remember to add the dependency to your app. After that, you can include the service wherever you need. All of ngPhoton's functions return promises.
 
 Basically, you need to do 3 things:
