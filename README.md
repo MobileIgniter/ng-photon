@@ -16,7 +16,7 @@ Basically, you need to do 3 things:
 
 1. `ngPhoton.deviceInfo()` will tell you whether or not you can talk to the Photon. It'll give you its deviceID.
 2. `ngPhoton.scan()` will give you a list of Access Points the Photon can see. You should display these to the user in some way that lets them select which network to connect to. You can check whether or not it's a secured network by inspecting the `sec` property.
-3. `ngPhoton.connect(accessPoint, password)` will do 3 things for you: 1) get the device's PublicKey (which isn't actually needed but the SAP library needs you to do it), 2) configure the Photon with the wireless info you provided (including password), and 3) tell the Photon to connect to the network.
+3. `ngPhoton.connect({accessPoint, password})` will do 3 things for you: 1) get the device's PublicKey (which isn't actually needed but the Photon needs you to do it), 2) configure the Photon with the wireless info you provided (including password), and 3) tell the Photon to connect to the network.
 
 ## Caveats ##
 
