@@ -83,6 +83,18 @@
                 case 0x00400006:
                   ap.networkType = "WPA2_MIXED_PSK";
                   break;
+                case 0x02200004:
+                  ap.networkType = "WPA2_AES_PSK ENTERPRISE";
+                  break;
+                case 0x02400004:
+                  ap.networkType = "WPA2_TKIP_PSK ENTERPRISE";
+                  break;
+                case 0x02400002:
+                  ap.networkType = "WPA2_TKIP_PSK ENTERPRISE";
+                  break;
+                case 0x02400006:
+                  ap.networkType = "WPA2_MIXED_PSK ENTERPRISE";
+                  break;
                 default:
                   ap.networkType = "OPEN";
                   break;
